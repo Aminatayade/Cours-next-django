@@ -1,0 +1,10 @@
+POST http://localhost:8000/users/register/customer
+Content-Type: application/json
+
+{
+    "email": "customer@example.com",
+    "password": "password123",
+    "password_confirmation": "password123",
+    "username": "customer",
+    "date_of_birth": "1990-01-01"
+}
