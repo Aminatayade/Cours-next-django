@@ -31,3 +31,17 @@ body {
     text-wrap: balance;
   }
 }
+/* Si vous utilisez CSS standard */
+.salle-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.salle-card {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

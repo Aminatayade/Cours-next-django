@@ -19,13 +19,13 @@ class Reservation(models.Model):
 class Equipement(models.Model):
     nom = models.CharField(max_length=100)
     details = models.TextField()
-    prix = models.DecimalField(max_digits=6, decimal_places=2)
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
     disponibilite = models.BooleanField(default=True)
 
 class Restauration(models.Model):
     nom = models.CharField(max_length=100)
     details = models.TextField()
-    prix = models.DecimalField(max_digits=6, decimal_places=2)
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
     disponibilite = models.BooleanField(default=True)
 
 class ReservationEquipement(models.Model):
@@ -37,3 +37,5 @@ class ReservationRestauration(models.Model):
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
     restauration = models.ForeignKey(Restauration, on_delete=models.CASCADE)
     quantite = models.IntegerField()
+
+
