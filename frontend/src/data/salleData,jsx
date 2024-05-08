@@ -1,5 +1,0 @@
-export const salleData = [
-    { id: 1, nom: "Salle A", prix: 100, categorie: "Conférence", capacite: 100, lieu: "Paris", image: "/path/to/image1.jpg" },
-    { id: 2, nom: "Salle B", prix: 150, categorie: "Mariage", capacite: 150, lieu: "Lyon", image: "/path/to/image2.jpg" },
-    // Ajoutez d'autres salles selon le besoin
-];
