@@ -15,7 +15,8 @@ class Reservation(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE)
     salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
     date_reservation = models.DateField()
-    duree = models.IntegerField()
+    date_debut = models.CharField(max_length=100, default='10:00')
+    date_fin = models.CharField(max_length=100, default='12:00')
     moyen_paiement = models.CharField(max_length=100)
 
 class Equipement(models.Model):

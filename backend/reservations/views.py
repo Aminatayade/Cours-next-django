@@ -9,6 +9,14 @@ class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
+    def create(self, request, *args, **kwargs):
+        salle_id = request.data.get('salle')
+        salle = Salle.objects.filter(id=salle_id, disponibilite=True).first()
+        if not salle:
+            return Response({"error": "Cette salle est déjà réservée à cette heure."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        return super().create(request, *args, **kwargs)
+
     @action(detail=True, methods=['post', 'get'])
     def add_equipement(self, request, pk=None):
         reservation = self.get_object()
