@@ -7,6 +7,8 @@ class Salle(models.Model):
     description = models.TextField()
     photos = models.ImageField(upload_to='static/')
     categorie = models.CharField(max_length=100)
+    prix = models.IntegerField(default=0)
+    lieu = models.CharField(max_length=100, default='Dakar')
     disponibilite = models.BooleanField(default=True)
 
 class Reservation(models.Model):
