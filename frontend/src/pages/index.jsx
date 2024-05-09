@@ -1,15 +1,13 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/common/Navbar";
 import Link from "next/link";
 import Image from 'next/image'; // Importer le composant Image de Next.js
 
 export default function Home() {
     return (
-        <div className="min-h-screen text-black bg-gray-100">
-            <Navbar isAuthenticated={true} />
-            <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-                {/* Section Texte et Boutons à gauche */}
+        <div className="text-black">
+            <div className="container flex items-center justify-between w-full px-5 py-4">
                 <div className="flex-1 max-w-md">
-                    <h1 className="text-3xl font-bold mb-6">Bienvenue sur notre plateforme de gestion de réservation de salle</h1>
+                    <h1 className="mb-6 text-3xl font-bold">Bienvenue sur notre plateforme de gestion de réservation de salle</h1>
                     <p className="mb-6">Nos salles de réunion à Dakar sont idéales pour faire un brainstorming entre collègues, impressionner des clients ou mener des sessions de formation productives. Elles sont réservables à l'heure ou à la journée, et notre équipe d'assistance se tient à votre entière disposition en cas de besoin.</p>
                     <div>
                         <Link href="/register">
@@ -26,7 +24,7 @@ export default function Home() {
                 </div>
 
                 {/* Section Image à droite */}
-                <div className="flex-1 flex justify-center items-center max-w-md">
+                <div className="flex items-center justify-center flex-1 max-w-md">
                     <Image
                         src="/images/salle1.webp"
                         alt="Salle de réunion"

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/common/Navbar';
 
 const salles = [
      { id: 1, nom: "Salle Executive - Deluxe", capacite: "50 personnes", equipements: ["Projecteur", "Wi-Fi", "Climatisation"], prix: "200€ par heure", image: "/images/salle1.webp", lieu: "Dakar - Centre" },
@@ -20,9 +20,8 @@ const salles = [
 function SallesPage() {
      return (
           <div className="min-h-screen bg-white">
-               <Navbar />
                <div className="container px-4 py-6 mx-auto">
-                    <h1 className="mb-6 text-3xl font-bold text-gray-900">Détails des Salles à Dakar</h1>
+                    <h1 className="mb-6 text-3xl font-bold text-center text-gray-500 ">Nos Salles</h1>
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                          {salles.map(salle => (
                               <div key={salle.id} className="p-4 m-5 bg-gray-100 rounded-lg shadow-lg">
@@ -39,8 +38,8 @@ function SallesPage() {
                                    <p><strong>Équipements :</strong> {salle.equipements.join(", ")}</p>
                                    <p><strong>Prix :</strong> {salle.prix}</p>
                                    <p><strong>Lieu :</strong> {salle.lieu}</p>
-                                   <Link href={`/salle/${salle.id}`} passHref>
-                                        <button className="p-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600">Voir plus</button>
+                                   <Link href={`/salles/${salle.id}`} passHref>
+                                        <button className="p-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600">Réserver</button>
                                    </Link>
                               </div>
                          ))}

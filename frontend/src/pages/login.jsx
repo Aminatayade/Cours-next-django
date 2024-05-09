@@ -1,4 +1,4 @@
-import { setCookie } from '@/utils/cookies';
+import { setSessionToken } from '@/lib/cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -38,11 +38,10 @@ export default function Login() {
                 throw new Error(user.message || 'Login failed');
             } else {
                 console.log(user);
-                setCookie('user', JSON.stringify(user));
                 toast.success('Login Successful!');
-
+                setSessionToken(JSON.stringify(user.user));
                 setTimeout(() => {
-                    router.push('/reservations');
+                    router.push('/salles');
                 }, 2000);
             }
 

@@ -28,6 +28,7 @@ const Navbar = ({ isAuthenticated }) => {
             <div className={`${isOpen ? 'block' : 'hidden'} md:block`}>
                 {isAuthenticated ? (
                     <>
+                        <Link href="/salles" legacyBehavior><a className="block px-4 py-2 md:inline-block">Salles</a></Link>
                         <Link href="/" legacyBehavior><a className="block px-4 py-2 md:inline-block">Accueil</a></Link>
                         <Link href="/reservations" legacyBehavior><a className="block px-4 py-2 md:inline-block">Réservation</a></Link>
                     </>
