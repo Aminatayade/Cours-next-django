@@ -19,7 +19,7 @@ export default function AjouterSalle() {
           formData.append('photos', image);
 
           try {
-               const response = await fetch('http://127.0.0.1:8000/reservations/salles/', {
+               const response = await fetch('http://127.0.0.1:8000/gestions/salles/', {
                     method: 'POST',
                     body: formData,
                });

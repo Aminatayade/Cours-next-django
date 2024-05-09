@@ -6,6 +6,8 @@ export const useSession = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  console.log(token);
+
   useEffect(() => {
     if (token) {
       setUser(token);

@@ -1,44 +1,48 @@
 from rest_framework.decorators import action
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status, viewsets, views
 from .models import Reservation, Salle,Equipement,Restauration,ReservationEquipement,ReservationRestauration
 from .serializers import ReservationSerializer, SalleSerializer,EquipementSerializer,RestaurationSerializer,ReservationEquipementSerializer,ReservationRestaurationSerializer
 
+class ReservationViewSet(viewsets.ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
 
-class ReservationView(views.APIView):
-    def post(self, request, *args, **kwargs):
-        serializer = ReservationSerializer(data=request.data)
+    @action(detail=True, methods=['post', 'get'])
+    def add_equipement(self, request, pk=None):
+        reservation = self.get_object()
+        serializer = ReservationEquipementSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(reservation=reservation)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class SalleView(views.APIView):
-    def get(self, request, *args, **kwargs):
-        salles = Salle.objects.all()
-        serializer = SalleSerializer(salles, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, *args, **kwargs):
-        serializer = SalleSerializer(data=request.data)
+    @action(detail=True, methods=['post', 'get'])
+    def add_restauration(self, request, pk=None):
+        reservation = self.get_object()
+        serializer = ReservationRestaurationSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(reservation=reservation)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class SallesView(generics.ListCreateAPIView):
+     queryset = Salle.objects.all()
+     serializer_class = SalleSerializer
 
-class EquipementViewSet(viewsets.ModelViewSet):
-    queryset = Equipement.objects.all()
-    serializer_class = EquipementSerializer
+class SalleView(generics.RetrieveUpdateAPIView):
+     queryset = Salle.objects.all()
+     serializer_class = SalleSerializer
+    
+class EquipementView(generics.ListCreateAPIView):
+     queryset = Equipement.objects.all()
+     serializer_class = EquipementSerializer
 
-class RestaurationViewSet(viewsets.ModelViewSet):
-    queryset = Restauration.objects.all()
-    serializer_class = RestaurationSerializer
+class RestaurationView(generics.ListCreateAPIView):
+     queryset = Restauration.objects.all()
+     serializer_class = RestaurationSerializer
 
-class ReservationEquipementViewSet(viewsets.ModelViewSet):
-    queryset = ReservationEquipement.objects.all()
-    serializer_class = ReservationEquipementSerializer
-
-class ReservationRestaurationViewSet(viewsets.ModelViewSet):
-    queryset = ReservationRestauration.objects.all()
-    serializer_class = ReservationRestaurationSerializer
+   

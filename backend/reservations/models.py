@@ -20,12 +20,14 @@ class Equipement(models.Model):
     nom = models.CharField(max_length=100)
     details = models.TextField()
     prix = models.DecimalField(max_digits=10, decimal_places=2)
+    photos = models.ImageField(upload_to='static/')
     disponibilite = models.BooleanField(default=True)
 
 class Restauration(models.Model):
     nom = models.CharField(max_length=100)
     details = models.TextField()
     prix = models.DecimalField(max_digits=10, decimal_places=2)
+    photos = models.ImageField(upload_to='static/')
     disponibilite = models.BooleanField(default=True)
 
 class ReservationEquipement(models.Model):
