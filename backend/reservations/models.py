@@ -5,7 +5,7 @@ class Salle(models.Model):
     nom = models.CharField(max_length=100)
     capacite = models.IntegerField()
     description = models.TextField()
-    photos = models.ImageField(upload_to='photos_salles/')
+    photos = models.ImageField(upload_to='static/')
     categorie = models.CharField(max_length=100)
     disponibilite = models.BooleanField(default=True)
 
